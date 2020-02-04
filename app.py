@@ -17,6 +17,8 @@ auth.set_access_token('1223203700040175616-5m0hCCA03wGaGQ6BvjlnAGcvpkk8rz',
 
 api = tweepy.API(auth)
 
+tweet = ''
+
 
 @app.route('/165NLjw4wWvWIqQUs3wyCwj1cYciQU')
 def send_tweet():
@@ -25,7 +27,14 @@ def send_tweet():
     return 'Sending Tweet'
 
 
+@app.route('/get_last_tweet')
+def get_last_tweet():
+
+    return tweet
+
+
 def do_magic():
+    global tweet
     artist, song_name, lyrics = prepare_tweet_content()
 
     tweet = get_tweet_string(artist, song_name, lyrics)

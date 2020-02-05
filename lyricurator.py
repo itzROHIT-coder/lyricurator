@@ -13,15 +13,19 @@ auth.set_access_token('1223203700040175616-rmVFV5k7P13QMwxwRlArta6agtmD2I',
 api = tweepy.API(auth)
 
 while True:
-    artist, song_name, lyrics = prepare_tweet_content()
+    try:
+        artist, song_name, lyrics = prepare_tweet_content()
 
-    tweet = get_tweet_string(artist, song_name, lyrics)
+        tweet = get_tweet_string(artist, song_name, lyrics)
 
-    # Send the tweet
-    api.update_status(tweet)
+        # Send the tweet
+        api.update_status(tweet)
 
-    now = datetime.now()
-    print('Tweet Sent | ' + now.strftime("%d/%m/%Y %H:%M:%S"))
-    print('-' * 40)
+        now = datetime.now()
+        print('Tweet Sent | ' + now.strftime("%d/%m/%Y %H:%M:%S"))
+        print('-' * 40)
+    except requests.ConnectionError:
+        now = datetime.now()
+        print('Connection Error | ' + now.strftime("%d/%m/%Y %H:%M:%S"))
 
     time.sleep(1800)

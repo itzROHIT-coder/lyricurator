@@ -1,3 +1,4 @@
+import os
 import tweepy
 from flask import Flask
 from concurrent.futures import ThreadPoolExecutor
@@ -44,4 +45,5 @@ def do_magic():
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)

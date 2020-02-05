@@ -22,6 +22,6 @@ while True:
 
     now = datetime.now()
     print('Tweet Sent | ' + now.strftime("%d/%m/%Y %H:%M:%S"))
-    print('-' * 10)
+    print('-' * 40)
 
     time.sleep(1800)

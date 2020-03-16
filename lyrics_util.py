@@ -82,7 +82,8 @@ def get_artist_name_and_song(artist_link):
             artist_name = strong.text.strip()
             break
 
-    artist_name = artist_name.rsplit(' ', 1)[0]  # Delete the last word 'Lyrics'
+    # Delete the last word 'Lyrics'
+    artist_name = artist_name.rsplit(' ', 1)[0]
 
     for div in scraped_objects.find_all('div', {'class': 'listalbum-item'}):
         links = div.find_all('a')
